@@ -4,17 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{.Title}}</title>
-    <script src="<https://unpkg.com/htmx.org@1.9.12>"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.12"></script>
   </head>
   <body>
     <nav></nav>
     <aside></aside>
     <main>
       <section>
-        <input type="file" name="source_input" id="source_input" />
-        <button hx-post="/upload" hx-target="this" hx-swap="outerHTML">
-          Upload
-        </button>
+        <form
+          hx-post="/upload"
+          hx-target="this"
+          hx-swap="outerHTML"
+          enctype="multipart/form-data"
+        >
+          <input type="file" name="source_input" id="source_input" />
+          <button type="submit">Upload</button>
+        </form>
+        <div>{{.output}}</div>
       </section>
     </main>
     <footer></footer>
